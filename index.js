@@ -14,6 +14,12 @@ client.connect(err => {
     const bookCollection = client.db("bookStore").collection("books");
     const ordersCollection = client.db("bookStore").collection("orders");
     console.log('database connect')
+    app.get('/bookList' , (req,res) =>{
+        bookCollection.find({})
+        .toArray((err ,data) => {
+            res.send(data)
+        })
+    })
      
   });
 
